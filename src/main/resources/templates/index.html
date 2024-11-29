@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hello World</title>
+    <meta charset="UTF-8" />
+    <title>Loda</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--css-->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+
+    <!--js-->
+    <script th:src="@{/js/bootstrap.js}"></script>
+
 </head>
 <body>
+<h1 th:utext="#{demo.hello}"></h1>
 
-<h1>Đây là một trang web</h1>
-
-<a href="/about">About</a>
-
-<form method="get" action="/hello">
-    <input type="input" name="name">
-    <button type="submit">Submit</button>
-</form>
+<a th:href="@{/profile}" class="btn btn-primary">Loda Profile</a>
 </body>
+
 </html>
