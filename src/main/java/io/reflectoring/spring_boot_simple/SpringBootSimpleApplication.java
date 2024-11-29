@@ -1,7 +1,12 @@
 package io.reflectoring.spring_boot_simple;
 
+import io.reflectoring.spring_boot_simple.entity.User;
+import io.reflectoring.spring_boot_simple.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class SpringBootSimpleApplication {
