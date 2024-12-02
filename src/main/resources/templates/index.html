@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--css-->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+
+    <!--js-->
+    <script th:src="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+<h1 th:text="#{demo.message.hello}"></h1>
+
+<a th:href="@{/listTodo}" th:text="#{demo.value.viewListTodo}" class="btn btn-primary"></a>
+<a th:href="@{/addTodo}" th:text="#{demo.value.addTodo}" class="btn btn-success"></a>
+</body>
+</html>
