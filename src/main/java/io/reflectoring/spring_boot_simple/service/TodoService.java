@@ -30,4 +30,8 @@ public class TodoService {
         }
         return null;
     }
+
+    public Todo getTodo(String todoId) {
+        return todoRepository.getById(todoId);
+    }
 }
