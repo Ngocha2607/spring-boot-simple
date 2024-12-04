@@ -32,6 +32,7 @@ public class TodoService {
     }
 
     public Todo getTodo(String todoId) {
-        return todoRepository.getById(todoId);
+
+        return todoRepository.findById(todoId).orElseThrow();
     }
 }

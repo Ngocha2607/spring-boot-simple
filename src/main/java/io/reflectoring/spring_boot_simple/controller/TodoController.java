@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/todo")
 public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    @GetMapping("/listTodo")
+    @GetMapping()
     public List<Todo> index(@RequestParam(value = "limit", required = false) Integer limit) {
         return this.todoService.findAll(limit);
     }
@@ -29,7 +29,7 @@ public class TodoController {
         return ResponseEntity.ok().body(todo);
     }
 
-    @GetMapping("/todo/{todoId}")
+    @GetMapping("/detail/{todoId}")
     public Todo getTodo(@PathVariable() String todoId) {
         return todoService.getTodo(todoId);
 
