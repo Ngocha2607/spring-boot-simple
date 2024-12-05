@@ -1,15 +1,13 @@
 package io.reflectoring.spring_boot_simple.controller;
 
+import io.reflectoring.spring_boot_simple.dto.TodoDto;
 import io.reflectoring.spring_boot_simple.model.Todo;
 import io.reflectoring.spring_boot_simple.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/todo")
@@ -30,7 +28,7 @@ public class TodoController {
     }
 
     @GetMapping("/detail/{todoId}")
-    public Todo getTodo(@PathVariable() String todoId) {
+    public TodoDto getTodo(@PathVariable() String todoId) {
         return todoService.getTodo(todoId);
 
     }

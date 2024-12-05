@@ -12,7 +12,6 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-
     private String title;
     private String detail;
 }

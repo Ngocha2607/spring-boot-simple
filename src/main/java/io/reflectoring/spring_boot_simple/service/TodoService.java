@@ -1,9 +1,11 @@
 package io.reflectoring.spring_boot_simple.service;
 
+import io.reflectoring.spring_boot_simple.dto.TodoDto;
 import io.reflectoring.spring_boot_simple.model.Todo;
 import io.reflectoring.spring_boot_simple.model.TodoValidator;
 import io.reflectoring.spring_boot_simple.repository.TodoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +13,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class TodoService {
-    @Autowired
-    private TodoRepository todoRepository;
-    @Autowired
-    private TodoValidator todoValidator;
+
+    private final ModelMapper mapper;
+
+    private final TodoRepository todoRepository;
+
+    private final TodoValidator todoValidator;
 
     public List<Todo> findAll(Integer limit) {
         return Optional.ofNullable(limit)
@@ -31,8 +36,10 @@ public class TodoService {
         return null;
     }
 
-    public Todo getTodo(String todoId) {
+    public TodoDto getTodo(String todoId) {
 
-        return todoRepository.findById(todoId).orElseThrow();
+        Todo todo = todoRepository.findById(todoId).orElseThrow();
+
+        return mapper.map(todo, TodoDto.class);
     }
 }
