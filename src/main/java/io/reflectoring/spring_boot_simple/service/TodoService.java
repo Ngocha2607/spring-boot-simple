@@ -2,7 +2,6 @@ package io.reflectoring.spring_boot_simple.service;
 
 import io.reflectoring.spring_boot_simple.dto.TodoDto;
 import io.reflectoring.spring_boot_simple.model.Todo;
-import io.reflectoring.spring_boot_simple.model.TodoValidator;
 import io.reflectoring.spring_boot_simple.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -20,7 +19,6 @@ public class TodoService {
 
     private final TodoRepository todoRepository;
 
-    private final TodoValidator todoValidator;
 
     public List<Todo> findAll(Integer limit) {
         return Optional.ofNullable(limit)
@@ -29,11 +27,10 @@ public class TodoService {
     }
 
 
-    public Todo add(Todo todo) {
-        if(todoValidator.isValid(todo)) {
-            return todoRepository.save(todo);
-        }
-        return null;
+    public Todo add(TodoDto todoDto) {
+        Todo todo = mapper.map(todoDto, Todo.class);
+        return todoRepository.save(todo);
+
     }
 
     public TodoDto getTodo(String todoId) {
