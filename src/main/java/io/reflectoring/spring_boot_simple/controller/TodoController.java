@@ -16,7 +16,7 @@ public class TodoController {
     private TodoService todoService;
 
     @GetMapping()
-    public List<Todo> index(@RequestParam(value = "limit", required = false) Integer limit) {
+    public List<Todo> index(@RequestParam(value = "limit", required = false, defaultValue = "30") Integer limit) {
         return this.todoService.findAll(limit);
     }
 
@@ -24,7 +24,7 @@ public class TodoController {
     public ResponseEntity<Todo> addTodo(@RequestBody Todo todo) {
         todoService.add(todo);
 
-        return ResponseEntity.ok().body(todo);
+        return ResponseEntity.status(HttpStatus.OK).body("Create Successfully!").build();
     }
 
     @GetMapping("/detail/{todoId}")
